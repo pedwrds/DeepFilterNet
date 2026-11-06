@@ -7,16 +7,25 @@ from loguru import logger
 from numpy import ndarray
 from torch import Tensor
 
-try:
-    from torchaudio import AudioMetaData
 
-    TA_RESAMPLE_SINC = "sinc_interp_hann"
-    TA_RESAMPLE_KAISER = "sinc_interp_kaiser"
-except ImportError:
-    from torchaudio.backend.common import AudioMetaData
+from typing import Any
 
-    TA_RESAMPLE_SINC = "sinc_interpolation"
-    TA_RESAMPLE_KAISER = "kaiser_window"
+AudioMetaData = Any
+
+TA_RESAMPLE_SINC = "sinc_interp_hann"
+TA_RESAMPLE_KAISER = "sinc_interp_kaiser"
+
+
+# try:
+#     from torchaudio import AudioMetaData
+
+#     TA_RESAMPLE_SINC = "sinc_interp_hann"
+#     TA_RESAMPLE_KAISER = "sinc_interp_kaiser"
+# except ImportError:
+#     from torchaudio.backend.common import AudioMetaData
+
+#     TA_RESAMPLE_SINC = "sinc_interpolation"
+#     TA_RESAMPLE_KAISER = "kaiser_window"
 
 from df.logger import warn_once
 from df.utils import download_file, get_cache_dir, get_git_root
